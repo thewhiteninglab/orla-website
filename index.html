@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ORLA — Smile Brighter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --yellow: #E5FF00;
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+      --gray-50: #F8F8F8;
+      --gray-100: #F0F0F0;
+      --gray-200: #E0E0E0;
+      --gray-400: #999999;
+      --gray-600: #555555;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-100);
+      transition: box-shadow 0.3s;
+    }
+
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+    }
+
+    .nav-logo { height: 26px; }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--black);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 0.5; }
+
+    .nav-cta {
+      background: var(--yellow) !important;
+      color: var(--black) !important;
+      padding: 0.55rem 1.3rem;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      transition: opacity 0.2s, transform 0.2s !important;
+    }
+
+    .nav-cta:hover { opacity: 0.85 !important; transform: translateY(-1px); }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--black);
+      border-radius: 2px;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--black);
+      color: var(--white);
+      padding: 0.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .trust-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+
+    .trust-bar-icon { color: var(--yellow); font-size: 0.9rem; }
+
+    .trust-bar-divider {
+      width: 1px;
+      height: 14px;
+      background: #333;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 3rem 5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--gray-600);
+    }
+
+    .hero-stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .hero-star {
+      width: 13px;
+      height: 13px;
+      background: var(--yellow);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--black);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      max-width: 14ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 3px var(--black);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      max-width: 42ch;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      padding: 0.9rem 2.25rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.82; transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--black);
+      padding: 0.9rem 2.25rem;
+      border-radius: 100px;
+      border: 1.5px solid var(--black);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--black);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .hero-guarantee {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .hero-guarantee::before { content: '🔒'; font-size: 0.75rem; }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 36px;
+      background: var(--gray-200);
+      display: block;
+      animation: scrollLine 1.5s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+      50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      background: var(--yellow);
+      padding: 0.9rem 0;
+      overflow: hidden;
+      border-top: 1.5px solid var(--black);
+      border-bottom: 1.5px solid var(--black);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-track span {
+      font-family: 'Anton', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+
+    .marquee-track span.dot::before { content: '✦'; margin-right: 3rem; }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION SHARED ── */
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      max-width: 18ch;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── PRODUCTS ── */
+    .products {
+      padding: 7rem 2rem;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .products-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .products-header .section-title { margin-bottom: 0; }
+
+    .view-all {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 2px;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+
+    .view-all:hover { opacity: 0.5; }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+
+    .product-card {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      border-color: var(--black);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .product-card.featured {
+      border-color: var(--black);
+      background: var(--black);
+    }
+
+    .product-image {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      background: var(--gray-50);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .product-card.featured .product-image { background: var(--yellow); }
+
+    .product-badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 100px;
+    }
+
+    .product-card.featured .product-badge {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .product-info {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-card.featured .product-info { border-top: 1px solid #1e1e1e; }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .product-stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .p-star {
+      width: 10px;
+      height: 10px;
+      background: var(--yellow);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .product-card.featured .p-star { background: var(--yellow); }
+
+    .product-review-count {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+    }
+
+    .product-card.featured .product-review-count { color: #666; }
+
+    .product-name {
+      font-family: 'Anton', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+    }
+
+    .product-card.featured .product-name { color: var(--white); }
+
+    .product-desc {
+      font-size: 0.78rem;
+      color: var(--gray-600);
+      line-height: 1.55;
+      margin-bottom: 0.75rem;
+      flex: 1;
+    }
+
+    .product-card.featured .product-desc { color: #777; }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .product-price-wrap { display: flex; flex-direction: column; }
+
+    .product-price {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .product-card.featured .product-price { color: var(--white); }
+
+    .product-original {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      text-decoration: line-through;
+      margin-top: 1px;
+    }
+
+    .product-card.featured .product-original { color: #555; }
+
+    .product-add {
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .product-add:hover { opacity: 0.82; transform: scale(1.03); }
+
+    .product-card.featured .product-add {
+      background: var(--yellow);
+      color: var(--black);
+    }
+
+    /* ── GUARANTEE STRIP ── */
+    .guarantee-strip {
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 2.5rem 3rem;
+    }
+
+    .guarantee-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .guarantee-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .guarantee-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .guarantee-title {
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .guarantee-desc {
+      font-size: 0.78rem;
+      color: var(--gray-600);
+      line-height: 1.5;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      background: var(--black);
+      padding: 7rem 3rem;
+      color: var(--white);
+    }
+
+    .how-inner { max-width: 1280px; margin: 0 auto; }
+
+    .how .section-label { color: var(--yellow); }
+
+    .how .section-title { color: var(--white); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .step {
+      border-top: 1px solid #1e1e1e;
+      padding: 2.5rem 2.5rem 2.5rem 0;
+    }
+
+    .step:not(:first-child) {
+      padding-left: 2.5rem;
+      border-left: 1px solid #1e1e1e;
+    }
+
+    .step-number {
+      font-family: 'Anton', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .step-desc {
+      font-size: 0.875rem;
+      color: #777;
+      line-height: 1.7;
+    }
+
+    /* ── AS SEEN IN ── */
+    .press {
+      padding: 3.5rem 3rem;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .press-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .press-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      white-space: nowrap;
+    }
+
+    .press-logos {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .press-logo {
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--gray-200);
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .press-logo:hover { color: var(--gray-400); }
+
+    /* ── RESULTS ── */
+    .results {
+      padding: 7rem 3rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .results-visual {
+      background: var(--gray-50);
+      border-radius: 24px;
+      height: 460px;
+      display: flex;
+      align-items: stretch;
+      border: 1.5px solid var(--gray-200);
+      overflow: hidden;
+    }
+
+    .before-half, .after-half {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .before-half { background: #f0ede8; border-right: 2px dashed var(--gray-200); }
+    .after-half { background: #f7ffcc; }
+
+    .ba-emoji { font-size: 3rem; }
+
+    .ba-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+
+    .ba-shade {
+      width: 72px;
+      height: 18px;
+      border-radius: 100px;
+    }
+
+    .ba-shade-label {
+      font-size: 0.7rem;
+      color: var(--gray-400);
+    }
+
+    .results-stats { display: flex; flex-direction: column; gap: 2rem; }
+
+    .stat { padding-bottom: 2rem; border-bottom: 1px solid var(--gray-100); }
+
+    .stat:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .stat-number {
+      font-family: 'Anton', sans-serif;
+      font-size: 3.75rem;
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .stat-number .outline {
+      color: transparent;
+      -webkit-text-stroke: 2.5px var(--black);
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      line-height: 1.55;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      background: var(--gray-50);
+      padding: 7rem 3rem;
+      border-top: 1.5px solid var(--gray-200);
+    }
+
+    .testimonials-inner { max-width: 1280px; margin: 0 auto; }
+
+    .testimonials-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .testimonials-header .section-title { margin-bottom: 0; }
+
+    .overall-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: right;
+    }
+
+    .overall-score {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .overall-meta { display: flex; flex-direction: column; gap: 3px; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .review-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .review-card:hover { border-color: var(--black); transform: translateY(-2px); }
+
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 0.85rem;
+    }
+
+    .star {
+      width: 13px;
+      height: 13px;
+      background: var(--yellow);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .review-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-text {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: var(--gray-600);
+      margin-bottom: 1.25rem;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .author-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+
+    .author-name { font-size: 0.825rem; font-weight: 600; }
+
+    .author-handle { font-size: 0.72rem; color: var(--gray-400); }
+
+    /* ── FORMULA ── */
+    .formula {
+      padding: 7rem 3rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .formula-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .ingredient {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: background 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+
+    .ingredient:hover {
+      background: var(--yellow);
+      border-color: var(--yellow);
+    }
+
+    .ingredient-icon { font-size: 1.75rem; margin-bottom: 1rem; display: block; }
+
+    .ingredient-name {
+      font-family: 'Anton', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .ingredient-desc { font-size: 0.8rem; color: var(--gray-600); line-height: 1.6; }
+
+    .ingredient:hover .ingredient-desc { color: var(--black); }
+
+    /* ── FAQ ── */
+    .faq {
+      background: var(--black);
+      padding: 7rem 3rem;
+      color: var(--white);
+    }
+
+    .faq-inner { max-width: 860px; margin: 0 auto; }
+
+    .faq .section-label { color: var(--yellow); }
+
+    .faq .section-title { color: var(--white); }
+
+    .faq-list { display: flex; flex-direction: column; }
+
+    .faq-item {
+      border-top: 1px solid #1e1e1e;
+    }
+
+    .faq-item:last-child { border-bottom: 1px solid #1e1e1e; }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 1.4rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-q:hover { color: var(--yellow); }
+
+    .faq-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+      color: var(--gray-400);
+      transition: border-color 0.2s, transform 0.3s;
+    }
+
+    .faq-item.open .faq-icon {
+      border-color: var(--yellow);
+      color: var(--yellow);
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      font-size: 0.875rem;
+      color: #888;
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding-bottom: 0;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-bottom: 1.5rem;
+    }
+
+    /* ── EMAIL CAPTURE ── */
+    .email-capture {
+      padding: 5rem 3rem;
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .email-inner {
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .email-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    .email-capture h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 0.75rem;
+    }
+
+    .email-capture p {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .email-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .email-input {
+      flex: 1;
+      padding: 0.875rem 1.25rem;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .email-input:focus { border-color: var(--black); }
+
+    .email-submit {
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 0.875rem 1.75rem;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .email-submit:hover { opacity: 0.82; transform: translateY(-1px); }
+
+    .email-fine {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      margin-top: 1rem;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      padding: 8rem 3rem;
+      background: var(--black);
+      text-align: center;
+      color: var(--white);
+    }
+
+    .cta h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.75rem, 6vw, 5.5rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta h2 .accent { color: var(--yellow); }
+
+    .cta p {
+      font-size: 0.95rem;
+      color: #777;
+      max-width: 40ch;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-yellow {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      padding: 0.9rem 2.5rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .btn-yellow:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    .cta-guarantee {
+      font-size: 0.78rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid #1a1a1a;
+      padding: 4rem 3rem 2.5rem;
+      color: #555;
+    }
+
+    .footer-top {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .footer-brand p {
+      font-size: 0.82rem;
+      color: #444;
+      line-height: 1.65;
+      margin-top: 1rem;
+      max-width: 26ch;
+    }
+
+    .footer-col-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+
+    .footer-col a {
+      text-decoration: none;
+      color: #444;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 2rem auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-copy { font-size: 0.75rem; }
+
+    .payment-icons {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .payment-icon {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 5px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #555;
+      text-transform: uppercase;
+    }
+
+    /* ── STICKY ADD TO CART BAR ── */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--white);
+      border-top: 1.5px solid var(--gray-200);
+      padding: 1rem 3rem;
+      z-index: 90;
+      transform: translateY(100%);
+      transition: transform 0.35s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      box-shadow: 0 -4px 30px rgba(0,0,0,0.08);
+    }
+
+    .sticky-bar.visible { transform: translateY(0); }
+
+    .sticky-bar-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .sticky-bar-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .sticky-bar-price { font-size: 0.875rem; color: var(--gray-600); }
+
+    .sticky-bar-cta {
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+
+    .sticky-bar-cta:hover { opacity: 0.85; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+      .guarantee-inner { grid-template-columns: repeat(2, 1fr); }
+      .formula-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner { padding: 1rem 1.5rem; }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 56px; left: 0; right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.25rem;
+        border-bottom: 1px solid var(--gray-100);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        z-index: 99;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-hamburger { display: flex; }
+
+      .trust-bar { padding: 0.5rem 1rem; gap: 1rem; font-size: 0.65rem; }
+      .trust-bar-divider { display: none; }
+
+      .hero { padding: 7rem 1.5rem 5rem; }
+
+      .hero h1 em { -webkit-text-stroke-width: 2px; }
+
+      .products { padding: 5rem 1.25rem; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .guarantee-strip { padding: 2rem 1.5rem; }
+      .guarantee-inner { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+      .how { padding: 5rem 1.5rem; }
+      .steps { grid-template-columns: 1fr; }
+      .step { padding: 2rem 0; }
+      .step:not(:first-child) { padding-left: 0; border-left: none; }
+
+      .press { padding: 2.5rem 1.5rem; }
+      .press-inner { gap: 1.5rem; }
+      .press-logos { gap: 1.75rem; }
+
+      .results { padding: 5rem 1.5rem; }
+      .results-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .testimonials { padding: 5rem 1.5rem; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .testimonials-header { flex-direction: column; align-items: flex-start; }
+
+      .formula { padding: 5rem 1.5rem; }
+      .formula-grid { grid-template-columns: 1fr 1fr; }
+
+      .faq { padding: 5rem 1.5rem; }
+
+      .email-capture { padding: 4rem 1.5rem; }
+      .email-form { flex-direction: column; }
+      .email-input { border-radius: 12px; }
+      .email-submit { border-radius: 12px; }
+
+      .cta { padding: 5rem 1.5rem; }
+
+      footer { padding: 3rem 1.5rem 2rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+      .sticky-bar { padding: 1rem 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .guarantee-inner { grid-template-columns: 1fr; }
+      .formula-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="/">
+        <img src="assets/orla-logo.png" alt="ORLA" class="nav-logo" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#products" class="nav-cta">Shop Now</a></li>
+      </ul>
+      <div class="nav-hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top: calc(8rem + 36px);">
+    <div class="hero-rating">
+      <div class="hero-stars">
+        <div class="hero-star"></div><div class="hero-star"></div><div class="hero-star"></div><div class="hero-star"></div><div class="hero-star"></div>
+      </div>
+      <span>4.9 · Loved by <strong>10,000+</strong> smiles</span>
+    </div>
+    <div class="hero-badge">Dentist-Approved Formula</div>
+    <h1>Your <em>brightest</em> smile starts here.</h1>
+    <p class="hero-sub">Professional-grade teeth whitening, designed for real life. Visible results in just 7 days — zero sensitivity guaranteed.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">Get My Whiter Smile →</a>
+      <a href="#how" class="btn-secondary">Watch How It Works</a>
+    </div>
+    <p class="hero-guarantee">30-Day Money-Back Guarantee · Free Shipping Over $50</p>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Whiter in 7 Days</span>
+      <span class="dot">Zero Sensitivity</span>
+      <span class="dot">Enamel Safe</span>
+      <span class="dot">Dentist Approved</span>
+      <span class="dot">Vegan &amp; Cruelty-Free</span>
+      <span class="dot">PAP+ Formula</span>
+      <span class="dot">30-Day Guarantee</span>
+      <span class="dot">Whiter in 7 Days</span>
+      <span class="dot">Zero Sensitivity</span>
+      <span class="dot">Enamel Safe</span>
+      <span class="dot">Dentist Approved</span>
+      <span class="dot">Vegan &amp; Cruelty-Free</span>
+      <span class="dot">PAP+ Formula</span>
+      <span class="dot">30-Day Guarantee</span>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="products-header">
+      <div>
+        <p class="section-label">The Collection</p>
+        <h2 class="section-title">Everything your smile needs.</h2>
+      </div>
+      <a href="#" class="view-all">View all products →</a>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card featured">
+        <div class="product-image">
+          <div class="product-badge">Bestseller</div>
+          <span role="img" aria-label="Whitening Kit">✨</span>
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <div class="product-stars"><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div></div>
+            <span class="product-review-count">(2,418)</span>
+          </div>
+          <p class="product-name">Complete Whitening Kit</p>
+          <p class="product-desc">LED accelerator + gel + serum. Maximum results in 7 days.</p>
+          <div class="product-footer">
+            <div class="product-price-wrap">
+              <span class="product-price">$89</span>
+              <span class="product-original">$119</span>
+            </div>
+            <button class="product-add">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <span role="img" aria-label="Whitening Strips">🦷</span>
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <div class="product-stars"><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div></div>
+            <span class="product-review-count">(1,204)</span>
+          </div>
+          <p class="product-name">Daily Whitening Strips</p>
+          <p class="product-desc">30-min enamel-safe strips. No mess, no slip, big results.</p>
+          <div class="product-footer">
+            <div class="product-price-wrap">
+              <span class="product-price">$34</span>
+            </div>
+            <button class="product-add">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <span role="img" aria-label="Whitening Toothpaste">🪥</span>
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <div class="product-stars"><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div></div>
+            <span class="product-review-count">(876)</span>
+          </div>
+          <p class="product-name">Brightening Toothpaste</p>
+          <p class="product-desc">Daily PAP+ formula. Maintain your results between kits.</p>
+          <div class="product-footer">
+            <div class="product-price-wrap">
+              <span class="product-price">$18</span>
+            </div>
+            <button class="product-add">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <span role="img" aria-label="Whitening Pen">✏️</span>
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <div class="product-stars"><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div></div>
+            <span class="product-review-count">(631)</span>
+          </div>
+          <p class="product-name">Touch-Up Pen</p>
+          <p class="product-desc">Precision whitening on the go. Instant results in 2 min.</p>
+          <div class="product-footer">
+            <div class="product-price-wrap">
+              <span class="product-price">$22</span>
+            </div>
+            <button class="product-add">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <div class="product-badge">New</div>
+          <span role="img" aria-label="Whitening Mouthwash">💧</span>
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <div class="product-stars"><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div></div>
+            <span class="product-review-count">(198)</span>
+          </div>
+          <p class="product-name">Whitening Mouthwash</p>
+          <p class="product-desc">Fluoride-free rinse that whitens and freshens in 60 sec.</p>
+          <div class="product-footer">
+            <div class="product-price-wrap">
+              <span class="product-price">$26</span>
+            </div>
+            <button class="product-add">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GUARANTEE STRIP -->
+  <div class="guarantee-strip">
+    <div class="guarantee-inner">
+      <div class="guarantee-item">
+        <div class="guarantee-icon">🔄</div>
+        <div>
+          <p class="guarantee-title">30-Day Money Back</p>
+          <p class="guarantee-desc">Not happy? Full refund, no questions asked.</p>
+        </div>
+      </div>
+      <div class="guarantee-item">
+        <div class="guarantee-icon">🚚</div>
+        <div>
+          <p class="guarantee-title">Free Shipping</p>
+          <p class="guarantee-desc">On all orders over $50. Fast 2–5 day delivery.</p>
+        </div>
+      </div>
+      <div class="guarantee-item">
+        <div class="guarantee-icon">🔬</div>
+        <div>
+          <p class="guarantee-title">Clinically Tested</p>
+          <p class="guarantee-desc">Dentist-approved & tested on sensitive teeth.</p>
+        </div>
+      </div>
+      <div class="guarantee-item">
+        <div class="guarantee-icon">🌱</div>
+        <div>
+          <p class="guarantee-title">Vegan & Cruelty-Free</p>
+          <p class="guarantee-desc">Clean ingredients. No parabens, no SLS, no harsh chemicals.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="how-inner">
+      <p class="section-label">The Process</p>
+      <h2 class="section-title">Simple steps, stunning results.</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Apply the Gel</h3>
+          <p class="step-desc">Use the precision applicator to evenly coat your teeth with our professional-grade whitening gel. Takes under 30 seconds — no trays, no mess.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3 class="step-title">Activate with Light</h3>
+          <p class="step-desc">Bite down on the LED accelerator for just 10 minutes. The blue-light wavelength activates our PAP+ formula for deeper, faster whitening without heat or pain.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3 class="step-title">Rinse &amp; Reveal</h3>
+          <p class="step-desc">Rinse off and see the difference immediately. Repeat daily for 7 days for full results — then maintain with our Touch-Up Pen for a smile that lasts 6 months.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AS SEEN IN -->
+  <div class="press">
+    <div class="press-inner">
+      <p class="press-label">As Seen In</p>
+      <div class="press-logos">
+        <span class="press-logo">Vogue</span>
+        <span class="press-logo">Allure</span>
+        <span class="press-logo">Glamour</span>
+        <span class="press-logo">Cosmopolitan</span>
+        <span class="press-logo">Byrdie</span>
+        <span class="press-logo">Refinery29</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <section class="results" id="results">
+    <p class="section-label">The Results</p>
+    <h2 class="section-title">Real results you can see.</h2>
+    <div class="results-grid">
+      <div class="results-visual">
+        <div class="before-half">
+          <div class="ba-emoji">🦷</div>
+          <span class="ba-label">Before</span>
+          <div class="ba-shade" style="background: #c8a96e;"></div>
+          <span class="ba-shade-label">Shade B3</span>
+        </div>
+        <div class="after-half">
+          <div class="ba-emoji">✨</div>
+          <span class="ba-label">After 7 Days</span>
+          <div class="ba-shade" style="background: #f5f0e6;"></div>
+          <span class="ba-shade-label">Shade A1</span>
+        </div>
+      </div>
+      <div class="results-stats">
+        <div class="stat">
+          <div class="stat-number">8<span class="outline">+</span></div>
+          <p class="stat-label">Average shades whiter after the first full 7-day treatment</p>
+        </div>
+        <div class="stat">
+          <div class="stat-number">97<span class="outline">%</span></div>
+          <p class="stat-label">Of users saw visible whitening within 3 days of use</p>
+        </div>
+        <div class="stat">
+          <div class="stat-number">6<span class="outline">mo</span></div>
+          <p class="stat-label">Average duration of results with our Touch-Up maintenance routine</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="reviews">
+    <div class="testimonials-inner">
+      <div class="testimonials-header">
+        <div>
+          <p class="section-label">Reviews</p>
+          <h2 class="section-title">10,000+ happy smiles.</h2>
+        </div>
+        <div class="overall-rating">
+          <span class="overall-score">4.9</span>
+          <div class="overall-meta">
+            <div class="review-stars" style="margin-bottom:4px;">
+              <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+            </div>
+            <span style="font-size:0.75rem; color:var(--gray-400);">Based on 5,200+ reviews</span>
+          </div>
+        </div>
+      </div>
+      <div class="reviews-grid">
+
+        <div class="review-card">
+          <div class="review-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <p class="review-title">"Zero sensitivity — finally!"</p>
+          <p class="review-text">I was skeptical but ORLA genuinely works. My teeth are noticeably whiter after just 5 days and zero sensitivity — something I always struggled with using other brands.</p>
+          <div class="review-author">
+            <div class="author-avatar">SM</div>
+            <div>
+              <p class="author-name">Sofia M.</p>
+              <p class="author-handle">Verified Purchase · 3 weeks ago</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <p class="review-title">"Already on my second kit"</p>
+          <p class="review-text">Finally a whitening kit that doesn't make my teeth hurt! The LED light makes it feel professional and legit. Results were visible by day 3. Already ordered my second kit.</p>
+          <div class="review-author">
+            <div class="author-avatar">JK</div>
+            <div>
+              <p class="author-name">Jake K.</p>
+              <p class="author-handle">Verified Purchase · 1 month ago</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <p class="review-title">"My dentist asked what I was using"</p>
+          <p class="review-text">The packaging is gorgeous and the product works beautifully. I went 6 shades whiter in a week. My dentist even asked what I was using at my last checkup. 10/10.</p>
+          <div class="review-author">
+            <div class="author-avatar">AL</div>
+            <div>
+              <p class="author-name">Aisha L.</p>
+              <p class="author-handle">Verified Purchase · 2 months ago</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULA -->
+  <section class="formula">
+    <p class="section-label">The Formula</p>
+    <h2 class="section-title">What's inside matters.</h2>
+    <div class="formula-grid">
+      <div class="ingredient">
+        <span class="ingredient-icon" aria-hidden="true">⚡</span>
+        <p class="ingredient-name">PAP+ Complex</p>
+        <p class="ingredient-desc">Next-generation whitening molecule — as effective as hydrogen peroxide but gentler on enamel and gums. The future of whitening.</p>
+      </div>
+      <div class="ingredient">
+        <span class="ingredient-icon" aria-hidden="true">🌊</span>
+        <p class="ingredient-name">Hydroxyapatite</p>
+        <p class="ingredient-desc">Nano-sized mineral that rebuilds and remineralizes enamel while you whiten — reducing sensitivity and strengthening teeth over time.</p>
+      </div>
+      <div class="ingredient">
+        <span class="ingredient-icon" aria-hidden="true">🌿</span>
+        <p class="ingredient-name">Aloe Vera</p>
+        <p class="ingredient-desc">Soothes gum tissue and reduces inflammation throughout the whitening process, making it comfortable even for sensitive mouths.</p>
+      </div>
+      <div class="ingredient">
+        <span class="ingredient-icon" aria-hidden="true">💧</span>
+        <p class="ingredient-name">Xylitol</p>
+        <p class="ingredient-desc">Natural sweetener that balances pH, inhibits cavity-causing bacteria, and keeps your mouth fresh long after treatment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-inner">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">Got questions?</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Will ORLA cause tooth sensitivity?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Unlike hydrogen peroxide-based whiteners, our PAP+ formula is clinically proven to whiten without causing sensitivity. We've also added Hydroxyapatite to actively strengthen and remineralize enamel during treatment. The vast majority of users — including those with previously sensitive teeth — report zero discomfort.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How quickly will I see results?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Most users notice a difference within the first 2–3 uses. For full results (up to 8+ shades whiter), complete the full 7-day treatment. Visible whitening is backed by clinical testing on real users — not staged photography.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is ORLA safe for veneers, crowns, or bonding?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Our formula is designed for natural tooth enamel and will not damage dental work. However, it will not whiten existing crowns, veneers, or composite bonding — only natural teeth. We recommend consulting your dentist if you have significant dental restorations.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How long do results last?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Results typically last 4–6 months with the full kit. To maximize longevity, we recommend using the Touch-Up Pen 2–3x per week and our Brightening Toothpaste daily. Avoid dark-staining foods and beverages in the first 48 hours after treatment.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What's your return policy?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">We offer a 30-day, no-questions-asked money-back guarantee. If you're not completely satisfied with your results within 30 days of purchase, contact our support team for a full refund — no need to return the product.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL CAPTURE -->
+  <section class="email-capture">
+    <div class="email-inner">
+      <span class="email-badge">Exclusive Offer</span>
+      <h2>Get 15% off your first order.</h2>
+      <p>Join the ORLA community and receive exclusive deals, early access to new products, and expert whitening tips — delivered straight to your inbox.</p>
+      <form class="email-form" onsubmit="handleEmail(event)">
+        <input type="email" class="email-input" placeholder="Enter your email address" required aria-label="Email address" />
+        <button type="submit" class="email-submit">Claim 15% Off</button>
+      </form>
+      <p class="email-fine">No spam, ever. Unsubscribe anytime. By signing up you agree to our Privacy Policy.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Ready to <span class="accent">smile</span> brighter?</h2>
+    <p>Join 10,000+ customers who've transformed their smile with ORLA. Free shipping on orders over $50.</p>
+    <div class="cta-actions">
+      <a href="#products" class="btn-yellow">Shop the Collection →</a>
+      <span class="cta-guarantee">🔒 30-Day Money-Back Guarantee</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/orla-logo.png" alt="ORLA" style="height:28px; filter:invert(1);" />
+        <p>Professional-grade teeth whitening for real life. Visible results in 7 days, zero sensitivity guaranteed.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Shop</p>
+        <ul>
+          <li><a href="#">Complete Whitening Kit</a></li>
+          <li><a href="#">Daily Whitening Strips</a></li>
+          <li><a href="#">Brightening Toothpaste</a></li>
+          <li><a href="#">Touch-Up Pen</a></li>
+          <li><a href="#">Whitening Mouthwash</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Company</p>
+        <ul>
+          <li><a href="#">About ORLA</a></li>
+          <li><a href="#">Our Formula</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Support</p>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Shipping &amp; Returns</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 ORLA. All rights reserved.</p>
+      <div class="payment-icons">
+        <span class="payment-icon">Visa</span>
+        <span class="payment-icon">MC</span>
+        <span class="payment-icon">Amex</span>
+        <span class="payment-icon">PayPal</span>
+        <span class="payment-icon">⌘Pay</span>
+        <span class="payment-icon">GPay</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY BAR -->
+  <div class="sticky-bar" id="stickyBar">
+    <div class="sticky-bar-info">
+      <span>✨</span>
+      <div>
+        <p class="sticky-bar-title">Complete Whitening Kit</p>
+        <p class="sticky-bar-price">Bestseller · $89 <s style="color:#555;font-size:0.8em;">$119</s></p>
+      </div>
+    </div>
+    <button class="sticky-bar-cta" onclick="window.location.href='#products'">Add to Cart →</button>
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const stickyBar = document.getElementById('stickyBar');
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 20;
+      nav.classList.toggle('scrolled', scrolled);
+      stickyBar.classList.toggle('visible', window.scrollY > 600);
+    });
+
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    function handleEmail(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.email-submit');
+      btn.textContent = '🎉 Code sent!';
+      btn.style.background = '#333';
+      btn.disabled = true;
+    }
+  </script>
+</body>
+</html>
