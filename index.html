@@ -1471,6 +1471,121 @@
       color: var(--gray-400);
       font-size: 0.875rem;
     }
+
+    /* ── SOCIAL ICONS ── */
+    .footer-social {
+      display: flex;
+      gap: 0.65rem;
+      margin-top: 1.25rem;
+    }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #bbb;
+      transition: border-color 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .footer-social a:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ── FOOTER CONTACT ── */
+    .footer-contact {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: #bbb;
+      line-height: 1.8;
+    }
+    .footer-contact a { color: #bbb; text-decoration: none; transition: color 0.2s; }
+    .footer-contact a:hover { color: var(--yellow); }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 42px;
+      height: 42px;
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 150;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { transform: translateY(-3px); }
+
+    /* ── COOKIE BANNER ── */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #111;
+      border-top: 1px solid #222;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      z-index: 300;
+      flex-wrap: wrap;
+    }
+    .cookie-banner p {
+      font-size: 0.78rem;
+      color: #aaa;
+      line-height: 1.5;
+      flex: 1;
+      min-width: 200px;
+    }
+    .cookie-banner p a { color: var(--yellow); text-decoration: none; }
+    .cookie-banner-btns { display: flex; gap: 0.65rem; flex-shrink: 0; }
+    .cookie-accept {
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      border-radius: 100px;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .cookie-accept:hover { opacity: 0.85; }
+    .cookie-decline {
+      background: none;
+      color: #aaa;
+      border: 1px solid #333;
+      border-radius: 100px;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .cookie-decline:hover { border-color: #666; color: #ccc; }
+
+    /* ── CART TRUST BADGE ── */
+    .cart-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      color: var(--gray-400);
+      margin-top: 0.5rem;
+    }
+
   </style>
 </head>
 <body>
@@ -1520,6 +1635,10 @@
       </div>
       <button class="cart-checkout-btn" id="cartCheckoutBtn" onclick="goToCheckout()" disabled>Checkout →</button>
       <p class="cart-note">Taxes and shipping calculated at checkout</p>
+      <div class="cart-trust">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Secure Checkout · SSL Encrypted
+      </div>
     </div>
   </div>
 
@@ -1837,6 +1956,21 @@
       <div class="footer-brand">
         <img src="assets/orla-logo-yellow.png" alt="ORLA" style="height:28px;" />
         <p>Professional-grade whitening for real life. A brighter, more radiant smile — gentle and made for comfort. <em>(Results vary.)</em></p>
+        <div class="footer-contact">
+          <a href="mailto:hello@thewhiteninglab.co">hello@thewhiteninglab.co</a><br/>
+          <a href="https://thewhiteninglab.co" target="_blank" rel="noopener">thewhiteninglab.co</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://instagram.com/thewhiteninglab" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://tiktok.com/@thewhiteninglab" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.79a8.18 8.18 0 0 0 4.77 1.52V6.85a4.85 4.85 0 0 1-1-.16z"/></svg>
+          </a>
+          <a href="https://facebook.com/thewhiteninglab" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
       </div>
       <div class="footer-col">
         <p class="footer-col-title">Shop</p>
@@ -1866,6 +2000,7 @@
           <li><a href="#">Shipping Policy</a></li>
           <li><a href="#">Track Order</a></li>
           <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
         </ul>
       </div>
     </div>
@@ -2184,5 +2319,42 @@
 
     loadProducts();
   </script>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+    <p>We use cookies to improve your experience and analyse site traffic. By clicking "Accept", you consent to our use of cookies. See our <a href="#">Privacy Policy</a> for details.</p>
+    <div class="cookie-banner-btns">
+      <button class="cookie-decline" onclick="dismissCookies()">Decline</button>
+      <button class="cookie-accept" onclick="acceptCookies()">Accept</button>
+    </div>
+  </div>
+
+  <script>
+    // ── BACK TO TOP ──
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+
+    // ── COOKIE BANNER ──
+    const cookieBanner = document.getElementById('cookieBanner');
+    if (!localStorage.getItem('orla_cookies_choice')) {
+      cookieBanner.style.display = 'flex';
+    }
+    function acceptCookies() {
+      localStorage.setItem('orla_cookies_choice', 'accepted');
+      cookieBanner.style.display = 'none';
+    }
+    function dismissCookies() {
+      localStorage.setItem('orla_cookies_choice', 'declined');
+      cookieBanner.style.display = 'none';
+    }
+  </script>
+
 </body>
 </html>
