@@ -2052,7 +2052,7 @@
               <div class="product-stars"><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div><div class="p-star"></div></div>
               <span class="product-review-count">(${count.toLocaleString()})</span>
             </div>
-            <p class="product-name">${p.title}</p>
+            <p class="product-name">ORLA ${p.title}</p>
             <p class="product-desc">${desc}</p>
             <div class="product-footer">
               <div class="product-price-wrap">
@@ -2076,7 +2076,7 @@
     function updateStickyBarProduct(product) {
       const v = product.variants.edges[0]?.node;
       if (!v) return;
-      document.querySelector('.sticky-bar-title').textContent = product.title;
+      document.querySelector('.sticky-bar-title').textContent = 'ORLA ' + product.title;
       const compareHtml = v.compareAtPrice
         ? ` <s style="color:#555;font-size:0.8em;">$${parseFloat(v.compareAtPrice.amount).toFixed(2)}</s>`
         : '';
@@ -2200,7 +2200,7 @@
             ? `<img src="${m.image.url}" alt="${m.product.title}" class="cart-line-img">`
             : `<div class="cart-line-img"></div>`}
           <div class="cart-line-info">
-            <p class="cart-line-title">${m.product.title}</p>
+            <p class="cart-line-title">ORLA ${m.product.title}</p>
             ${m.title !== 'Default Title' ? `<p class="cart-line-variant">${m.title}</p>` : ''}
             <p class="cart-line-price">$${lineTotal} &middot; qty ${line.quantity}</p>
           </div>
