@@ -438,6 +438,8 @@
       display: flex;
       flex-direction: column;
       flex: 1;
+      background: var(--black);
+      border-top: 1px solid #1e1e1e;
     }
 
     .product-card.featured .product-info { border-top: 1px solid #1e1e1e; }
@@ -465,10 +467,8 @@
 
     .product-review-count {
       font-size: 0.72rem;
-      color: var(--gray-400);
+      color: #666;
     }
-
-    .product-card.featured .product-review-count { color: #666; }
 
     .product-name {
       font-family: 'Anton', sans-serif;
@@ -478,19 +478,16 @@
       text-transform: uppercase;
       margin-bottom: 0.3rem;
       line-height: 1.2;
+      color: var(--white);
     }
-
-    .product-card.featured .product-name { color: var(--white); }
 
     .product-desc {
       font-size: 0.78rem;
-      color: var(--gray-600);
+      color: #777;
       line-height: 1.55;
       margin-bottom: 0.75rem;
       flex: 1;
     }
-
-    .product-card.featured .product-desc { color: #777; }
 
     .product-footer {
       display: flex;
@@ -506,22 +503,19 @@
       font-size: 1.1rem;
       font-weight: 400;
       line-height: 1;
+      color: var(--white);
     }
-
-    .product-card.featured .product-price { color: var(--white); }
 
     .product-original {
       font-size: 0.72rem;
-      color: var(--gray-400);
+      color: #555;
       text-decoration: line-through;
       margin-top: 1px;
     }
 
-    .product-card.featured .product-original { color: #555; }
-
     .product-add {
-      background: var(--black);
-      color: var(--white);
+      background: var(--yellow);
+      color: var(--black);
       border: none;
       border-radius: 8px;
       font-size: 0.72rem;
@@ -534,11 +528,6 @@
     }
 
     .product-add:hover { opacity: 0.82; transform: scale(1.03); }
-
-    .product-card.featured .product-add {
-      background: var(--yellow);
-      color: var(--black);
-    }
 
     /* ── GUARANTEE STRIP ── */
     .guarantee-strip {
