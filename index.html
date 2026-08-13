@@ -600,7 +600,7 @@
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 0;
     }
 
@@ -1574,9 +1574,9 @@
       <a href="#products" class="btn-primary">Get My Brighter Smile →</a>
       <a href="#how" class="btn-secondary">Watch How It Works</a>
     </div>
-    <p class="hero-guarantee">30-Day Money-Back · Free Shipping Over $50</p>
+    <p class="hero-guarantee">Free Shipping Over $50</p>
     <p style="font-size:0.72rem;color:var(--gray-400);margin-top:0.5rem;">*Results vary.</p>
-    <div class="hero-scroll">Scroll</div>
+    <div class="hero-scroll"></div>
   </section>
 
   <!-- MARQUEE -->
@@ -1588,14 +1588,14 @@
       <span class="dot">Professional-Grade</span>
       <span class="dot">Vegan &amp; Cruelty-Free</span>
       <span class="dot">PAP+ Formula</span>
-      <span class="dot">30-Day Money-Back</span>
+      <span class="dot">Free Shipping $50+</span>
       <span class="dot">Brighter Smile</span>
       <span class="dot">Gentle &amp; Comfortable</span>
       <span class="dot">Smile-Safe</span>
       <span class="dot">Professional-Grade</span>
       <span class="dot">Vegan &amp; Cruelty-Free</span>
       <span class="dot">PAP+ Formula</span>
-      <span class="dot">30-Day Money-Back</span>
+      <span class="dot">Free Shipping $50+</span>
     </div>
   </div>
 
@@ -1616,13 +1616,6 @@
   <!-- GUARANTEE STRIP -->
   <div class="guarantee-strip">
     <div class="guarantee-inner">
-      <div class="guarantee-item">
-        <div class="guarantee-icon">🔄</div>
-        <div>
-          <p class="guarantee-title">30-Day Money Back</p>
-          <p class="guarantee-desc">Not in love? Full refund, no questions asked.</p>
-        </div>
-      </div>
       <div class="guarantee-item">
         <div class="guarantee-icon">🚚</div>
         <div>
@@ -1650,23 +1643,33 @@
   <!-- HOW IT WORKS -->
   <section class="how" id="how">
     <div class="how-inner">
-      <p class="section-label">The Process</p>
-      <h2 class="section-title">Simple steps, stunning results.</h2>
+      <p class="section-label">The Routine</p>
+      <h2 class="section-title">Your whitening &amp; maintenance routine.</h2>
       <div class="steps">
         <div class="step">
           <div class="step-number">01</div>
-          <h3 class="step-title">Apply the Gel</h3>
-          <p class="step-desc">Use the precision applicator to evenly coat your smile with our professional-grade whitening gel. Takes under 30 seconds — no trays, no mess.</p>
+          <h3 class="step-title">Start In-Studio at The Whitening Lab</h3>
+          <p class="step-desc">We assess your current smile and build a personalized brightening plan made just for you. Your journey to a radiant smile starts here — with a professional session designed around your unique needs.</p>
         </div>
         <div class="step">
           <div class="step-number">02</div>
-          <h3 class="step-title">Activate with Light</h3>
-          <p class="step-desc">Rest the LED accelerator in place for just 10 minutes. The blue-light wavelength activates our PAP+ formula for a deeper, brighter glow — comfortable and gentle from start to finish.</p>
+          <h3 class="step-title">ORLA Enamel Recovery Serum</h3>
+          <p class="step-desc">After your session, restore and soothe your smile with our mineral recovery serum. Formulated with potassium nitrate, calcium, and xylitol — keeping your smile comfortable, smooth, and radiant.</p>
         </div>
         <div class="step">
           <div class="step-number">03</div>
-          <h3 class="step-title">Rinse &amp; Reveal</h3>
-          <p class="step-desc">Rinse off and reveal your glow. Use daily as part of your routine, then keep it radiant with our Touch-Up Pen for a long-lasting glow.</p>
+          <h3 class="step-title">ORLA Whitening Foam Toothpaste</h3>
+          <p class="step-desc">Keep your smile bright every day with our gentle, non-abrasive foam toothpaste. Fluoride-free, SLS-free, and doubles as a foaming soak for whitening trays.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <h3 class="step-title">ORLA Whitening Pen or Whitening Strips</h3>
+          <p class="step-desc">Twist and go with our pocket-ready Whitening Pen for quick touch-ups, or use our 14-Day Whitening Strips for a deeper refresh — perfect for maintaining your radiant glow between sessions.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">05</div>
+          <h3 class="step-title">Return for Your Follow-Up Session</h3>
+          <p class="step-desc">Come back for a 60-minute or 40-minute in-studio session every 3–6 months to keep your smile at its absolute brightest. Consistency is the secret to a lasting glow.</p>
         </div>
       </div>
     </div>
@@ -1867,7 +1870,7 @@
     <p>Join 10,000+ customers who've transformed their smile with ORLA. Free shipping on orders over $50.</p>
     <div class="cta-actions">
       <a href="#products" class="btn-yellow">Shop the Collection →</a>
-      <span class="cta-guarantee">🔒 30-Day Money-Back Guarantee</span>
+      <span class="cta-guarantee">✨ Free Shipping Over $50</span>
     </div>
   </section>
 
@@ -1881,11 +1884,11 @@
       <div class="footer-col">
         <p class="footer-col-title">Shop</p>
         <ul>
-          <li><a href="#">Complete Whitening Kit</a></li>
-          <li><a href="#">Daily Whitening Strips</a></li>
-          <li><a href="#">Brightening Toothpaste</a></li>
-          <li><a href="#">Touch-Up Pen</a></li>
-          <li><a href="#">Whitening Mouthwash</a></li>
+          <li><a href="#">ORLA Teeth Whitening Strips</a></li>
+          <li><a href="#">ORLA Teeth Whitening Pen</a></li>
+          <li><a href="#">ORLA Enamel Recovery Serum</a></li>
+          <li><a href="#">ORLA Teeth Whitening Foam Toothpaste</a></li>
+          <li><a href="#">ORLA Teeth Whitening Gel Tray Refill</a></li>
         </ul>
       </div>
       <div class="footer-col">
